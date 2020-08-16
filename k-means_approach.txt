@@ -1,0 +1,151 @@
+import math
+import xlrd
+import sys
+print('Python: {}'.format(sys.version))
+import numpy 
+import pandas as pd
+from pandas.tools.plotting import scatter_matrix
+import matplotlib.pyplot as plt
+import numpy as np
+import warnings
+import xlrd
+import xlwt
+from mpl_toolkits.mplot3d import Axes3D
+from xlrd import open_workbook
+from copy import deepcopy
+import matplotlib
+from sklearn.metrics.pairwise import euclidean_distances
+import itertools
+import random
+from sklearn.cluster import KMeans
+import scipy
+from scipy.cluster.vq import whiten
+#from pandas.plotting import lag_plot
+#from pandas.plotting import radviz
+import plotly.plotly as py
+import plotly.graph_objs as go
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+headers = ["lat","long"]
+df=pd.read_csv(r"C:\Users\Tripti Sharma\Desktop\IndianRain\rain 4000 locations 244 days\indialocations_high_res.csv",names=headers)
+##print(dataset)
+x=df.iloc[:,0]
+y=df.iloc[:,1]
+
+x1=np.array(x)
+y1=np.array(y)
+
+#print (np.shape(x1))
+
+
+
+data = pd.read_csv(r"C:\Users\Tripti Sharma\Desktop\IndianRain\rain 4000 locations 244 days\rain 2001-2010 locs 4000.csv")
+#data = data.reset_index().values
+print(data.shape)
+numpy_matrix = data.as_matrix()
+print(numpy_matrix.shape)
+#data.head()
+
+
+#X = np.asanyarray(data, dtype=float, order='C')
+#print(X)
+#code_book=random.randint(1,400)
+
+#ts=scipy.cluster.vq.whiten(X)
+#scipy.cluster.vq.vq(X,code_book)
+cluster=KMeans(n_clusters=15, init='k-means++',max_iter=500).fit(numpy_matrix)
+cluster_centers = cluster.cluster_centers_
+
+labels = cluster.labels_
+n_clusters_ = labels.max()
+print(n_clusters_)
+print(np.shape(cluster_centers))
+
+
+f1=plt.scatter(y1,x1,s=2,c=cluster_centers[1])
+plt.colorbar(mappable=f1)
+plt.xlabel('latitude')
+plt.ylabel('longitude')
+plt.show()
+plt.colorbar(mappable=f1)
+f2=plt.scatter(y1,x1,s=2,c=cluster_centers[2])
+plt.xlabel('latitude')
+plt.ylabel('longitude')
+plt.show()
+plt.colorbar(mappable=f1)
+f3=plt.scatter(y1,x1,s=2,c=cluster_centers[3])
+plt.xlabel('latitude')
+plt.ylabel('longitude')
+plt.show()
+
+
+#plt.colorbar(mappable=f4)
+f4=plt.scatter(y1,x1,s=2,c=cluster_centers[4])
+plt.colorbar(mappable=f1)
+plt.xlabel('latitude')
+plt.ylabel('longitude')
+plt.show()
+
+f5=plt.scatter(y1,x1,s=2,c=cluster_centers[5])
+plt.colorbar(mappable=f1)
+plt.xlabel('latitude')
+plt.ylabel('longitude')
+plt.show()
+
+f6=plt.scatter(y1,x1,s=2,c=cluster_centers[6])
+plt.colorbar(mappable=f1)
+plt.xlabel('latitude')
+plt.ylabel('longitude')
+plt.show()
+
+
+
+
+f7=plt.scatter(y1,x1,s=2,c=cluster_centers[7])
+plt.colorbar(mappable=f1)
+plt.xlabel('latitude')
+plt.ylabel('longitude')
+plt.show()
+
+f8=plt.scatter(y1,x1,s=2,c=cluster_centers[8])
+plt.colorbar(mappable=f1)
+plt.xlabel('latitude')
+plt.ylabel('longitude')
+plt.show()
+
+f9=plt.scatter(y1,x1,s=2,c=cluster_centers[9])
+plt.colorbar(mappable=f1)
+plt.xlabel('latitude')
+plt.ylabel('longitude')
+plt.show()
+
+
+
+
+f10=plt.scatter(y1,x1,s=2,c=cluster_centers[10])
+plt.colorbar(mappable=f1)
+plt.xlabel('latitude')
+plt.ylabel('longitude')
+plt.show()
+
+f11=plt.scatter(y1,x1,s=2,c=cluster_centers[11])
+plt.colorbar(mappable=f1)
+plt.xlabel('latitude')
+plt.ylabel('longitude')
+plt.show()
+
+
+
